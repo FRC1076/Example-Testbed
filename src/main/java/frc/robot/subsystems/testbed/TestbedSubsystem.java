@@ -17,7 +17,7 @@ public class TestbedSubsystem extends SubsystemBase{
 
     public TestbedSubsystem() {
         // Initialize motor controller and encoder
-        m_motor = new SparkMax(41, MotorType.kBrushless);
+        m_motor = new SparkMax(51, MotorType.kBrushless);
         m_encoder = m_motor.getEncoder();
 
         // Initialize motor configuration
