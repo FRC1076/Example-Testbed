@@ -16,4 +16,13 @@ public final class Constants {
   public static class OperatorConstants {
     public static final int kDriverControllerPort = 0;
   }
+
+  public static class TestbedConstants {
+    public static final int kTestbedMotorID = 51;
+
+    public static final int kCurrentLimit = 20;
+
+    public static final double kPositionConversionFactor = 1.0; // For the testbed, this value is 1:1, because there are no gears.
+    public static final double kVelocityConversionFactor = 1.0 / 60.0; // Convert from RPM to rotations per second. If there were gears, you would also multiply by the gear ratio.
+  }
 }

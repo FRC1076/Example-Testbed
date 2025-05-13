@@ -1,5 +1,7 @@
 package frc.robot.subsystems.testbed;
 
+import frc.robot.Constants.TestbedConstants;
+
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
@@ -17,16 +19,16 @@ public class TestbedSubsystem extends SubsystemBase{
 
     public TestbedSubsystem() {
         // Initialize motor controller and encoder
-        m_motor = new SparkMax(51, MotorType.kBrushless);
+        m_motor = new SparkMax(TestbedConstants.kTestbedMotorID, MotorType.kBrushless);
         m_encoder = m_motor.getEncoder();
 
         // Initialize motor configuration
         m_motorConfig = new SparkMaxConfig();
         m_motorConfig
-            .smartCurrentLimit(20)
+            .smartCurrentLimit(TestbedConstants.kCurrentLimit)
         .encoder
-            .positionConversionFactor(1.0) // For the testbed, this value is 1:1, because there are no gears.
-            .velocityConversionFactor(1.0 / 60.0); // Convert from RPM to rotations per second. If there were gears, you would also multiply by the gear ratio.
+            .positionConversionFactor(TestbedConstants.kPositionConversionFactor) // For the testbed, this value is 1:1, because there are no gears.
+            .velocityConversionFactor(TestbedConstants.kVelocityConversionFactor); // Convert from RPM to rotations per second. If there were gears, you would also multiply by the gear ratio.
 
         // Apply motor configuration
         m_motor.configure(m_motorConfig, ResetMode.kNoResetSafeParameters, PersistMode.kNoPersistParameters);
